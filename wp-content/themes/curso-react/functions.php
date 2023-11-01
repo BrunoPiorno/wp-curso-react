@@ -22,23 +22,54 @@ if(!function_exists('a_add_image_size')){
 add_filter('use_block_editor_for_post', '__return_false', 10);
 add_filter('use_block_editor_for_post_type', '__return_false', 10);
 
-if( function_exists('acf_add_options_page') ) {
-
+if (function_exists('acf_add_options_page')) {
     acf_add_options_page(array(
-        'page_title'    => 'Theme General Settings',
+        'page_title'    => 'Theme Settings',
         'menu_title'    => 'Theme Settings',
-        'menu_slug'     => 'theme-general-settings',
+        'menu_slug'     => 'theme-settings',
         'capability'    => 'edit_posts',
-        'redirect'      => false
+        'redirect'      => true
     ));
 
     acf_add_options_sub_page(array(
         'page_title'    => 'Theme General Settings',
         'menu_title'    => 'General',
-        'parent_slug'   => 'theme-general-settings',
+        'parent_slug'   => 'theme-settings',
     ));
 
+    acf_add_options_page(array(
+        'page_title'    => 'Blocks',
+        'menu_title'    => 'Blocks',
+        'menu_slug'     => 'blocks',
+        'capability'    => 'edit_posts',
+        'redirect'      => true
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Header',
+        'menu_title'    => 'Header',
+        'parent_slug'   => 'blocks',
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Footer',
+        'menu_title'    => 'Footer',
+        'parent_slug'   => 'blocks',
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Cookies',
+        'menu_title'    => 'Cookies',
+        'parent_slug'   => 'blocks',
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title'    => 'About',
+        'menu_title'    => 'About',
+        'parent_slug'   => 'blocks',
+    ));
 }
+
 
 if (!function_exists('a_custom_navigation_menus')) {
     function a_custom_navigation_menus() {
